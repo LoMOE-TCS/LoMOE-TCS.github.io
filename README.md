@@ -1,14 +1,14 @@
-# Transfer4D: A framework for frugal motion capture and deformation transfer
+# LoMOE: Localized Multi-Object Editing via Multi-Diffusion
 
-This is the repository that contains source code for the [Transfer4D website](https://transfer4D.github.io).
+This is the repository that contains source code for the [LoMOE website](https://LoMOE-TCS.github.io).
 
-If you find Transfer4D useful for your work please cite:
+If you find LoMOE useful for your work please cite:
 ```
 @article{transfer4D
-  author    = {Maheshwari, Shubh and Narain, Rahul and Hebbalaguppe, Ramya},
-  title     = {Transfer4D: A framework for frugal motion capture and deformation transfer},
-  journal   = {CVPR},
-  year      = {2023},
+  author    = {Chakrabarty, Goirik and Chandrasekar, Aditya and Hebbalaguppe, Ramya and AP, Prathosh},
+  title     = {LoMOE: Localized Multi-Object Editing via Multi-Diffusion},
+  journal   = {ACMMM},
+  year      = {2024},
 }
 ```
 
