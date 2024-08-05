@@ -61,7 +61,7 @@
               <a href="https://rhebbalaguppe.github.io">Ramya Hebbalaguppe</a><sup>1,3</sup>,
             </span>
             <span class="author-block">
-              <a href="https://sites.google.com/view/prathosh/home">Prathosh AP</a><sup>1</sup>
+              <a href="https://sites.google.com/view/prathosh/home">Prathosh AP</a><sup>2</sup>
             </span>
           </div>
 
@@ -75,7 +75,8 @@
             <div class="publication-links">
               <!-- PDF Link. -->
               <span class="link-block">
-                <a href="https://openaccess.thecvf.com/content/CVPR2023/html/Maheshwari_Transfer4D_A_Framework_for_Frugal_Motion_Capture_and_Deformation_Transfer_CVPR_2023_paper.html" 
+                <!-- <a href="https://openaccess.thecvf.com/content/CVPR2023/html/Maheshwari_Transfer4D_A_Framework_for_Frugal_Motion_Capture_and_Deformation_Transfer_CVPR_2023_paper.html"  -->
+                <a href="#" onclick="alert('Coming soon')" 
                    class="external-link button is-normal is-rounded is-dark">
                   <span class="icon">
                       <i class="fas fa-file-pdf"></i>
@@ -85,7 +86,8 @@
               </span>
               <!-- Supplementary Link. -->
               <span class="link-block">
-                <a href="./static/5738_transfer4d_supp.zip" 
+                <!-- <a href="./static/5738_transfer4d_supp.zip"  -->
+                <a href="#" onclick="alert('Coming soon')" 
                    class="external-link button is-normal is-rounded is-dark">
                   <span class="icon">
                       <i class="fas fa-file-pdf"></i>
@@ -127,19 +129,21 @@
 <section class="hero teaser">
   <div class="container is-max-desktop">
     <div class="hero-body">
-      <video id="teaser" autoplay muted loop playsinline height="100%">
+      <!-- <video id="teaser" autoplay muted loop playsinline height="100%">
         <source src="./static/videos/Wednesday-Dance.mp4"
                 type="video/mp4">
-      </video>
+      </video> -->
+      <img src="./static/images/Teaser.png"
+                 class="interpolation-image"
+                 alt="Extracted Curve Skeleton"/>
       <h2 class="subtitle has-text-centered">
-        Transfer4D transfers motion from a commodity depth sensor to a virtual model.
       </h2>
     </div>
   </div>
 </section>
 
 
-<section class="hero is-light is-small">
+<!-- <section class="hero is-light is-small">
   <div class="hero-body">
     <div class="container is-max-desktop">
       <div id="results-carousel" class="carousel results-carousel">
@@ -170,10 +174,10 @@
       </div>
     </div>
   </div>
-</section>
+</section> -->
 
 
-<section class="section">
+<section class="section hero is-light">
   <div class="container is-max-desktop">
 
     <!-- Paper video. -->
@@ -229,10 +233,9 @@
   </div>
 </section>
 
-
-<section class="section hero is-light">
+<!-- How it works video -->
+<!-- <section class="section hero is-light">
   <div class="container is-max-desktop">
-    <!-- Animation. -->
     <div class="columns is-centered has-text-centered">
       <div class="column is-full-width">
         <h2 class="title is-3"> How it works </h2>
@@ -244,9 +247,8 @@
 
       </div>
     </div>
-    <!--/ Animation. -->
     </div>
-</section>
+</section> -->
 
 <section class="section">
   <div class="container is-max-desktop has-text-centered">
@@ -305,27 +307,27 @@
         <h2 class="title is-3 has-text-centered">Comparisions</h2>
 
         <!-- Static. -->
-        <h3 class="title is-4 has-text-centered">Static Skeleton Comparision</h3>
+        <h3 class="title is-4 has-text-centered">Multi-Object Editing Comparision</h3>
         <div class="content has-text-justified">
-          <img src="./static/images/Static-Skeleton-Comparision.jpeg"
+          <img src="./static/images/Single.png"
                  class="interpolation-image"
                  alt="Interpolation end reference image."/>
 
           <p>
-            Static skeletonisation methods do not incorporate motion information and produce temporally incoherent skeletons
+            <b>Comparison among contemporary methods for Single Object Edits: </b> We observe that <a href="https://sde-image-editing.github.io/">SDEdit</a> and <a href="https://www.timothybrooks.com/instruct-pix2pix">InstructP2P</a> tend to modify the whole image. <a href="https://github.com/openai/glide-text2im">GLIDE</a> often inpaints and removes the subject of the edit in cases where it fails to generate the edit. <a href="https://arxiv.org/abs/2210.11427">DiffEdit</a> produces the same output as SDEdit while preserving the unmasked regions of the input image. <a href="https://omriavrahami.com/blended-latent-diffusion-page/">BLD</a> doesn't preserve the structure of the input and makes unintented attribute edits to the masked subject. Finally, we observe that our proposed <b>LoMOE</b> makes the intented edit, preserves the unmasked region and avoids unintended attribute edits.
           </p>
         </div>
         <br/>
         <!--/ Static. -->
 
-        <!-- Motion Skeleton. -->
-        <h3 class="title is-4 has-text-centered">Skeleton embedding Comparision (Same object)</h3>
+        <!-- Multi-Object Comparison -->
+        <h3 class="title is-4 has-text-centered">Multi-Object Editing Comparision</h3>
         <div class="content has-text-justified">
-          <img src="./static/images/Motion-Skeleton-Comparision.jpeg"
+          <img src="./static/images/Multi.png"
                  class="interpolation-image"
                  alt="Interpolation end reference image."/>
           <p>
-             Compared to motion skeleton extracted from other methods, by incorporating structural cues, ours is more effective at embedding skeleton from incomplete mesh sequence.
+            <b>Comparison with contemporary methods for Multi-Object Edits:</b> While the baselines are either unable to make the edit, accumulate artifacts, edit the unmasked region, or make unintended attribute edits,  LoMOE is able to faithfully edit in accordance with the target prompts.
           </p>
         </div>
         <!--/ Motion Skeleton. -->
@@ -338,11 +340,11 @@
 <section class="section" id="BibTeX">
   <div class="container is-max-desktop content">
     <h2 class="title">BibTeX</h2>
-    <pre><code>@article{transfer4D,
-  author    = {Maheshwari, Shubh and Narain, Rahul and Hebbalaguppe, Ramya},
-  title     = {Transfer4D: A framework for frugal motion capture and deformation transfer},
-  journal   = {CVPR},
-  year      = {2023},
+    <pre><code>@article{LoMOE: Localized Multi-Object Editing via Multi-Diffusion,
+  author    = {Chakrabarty, Goirik and Chandrasekar, Aditya and Hebbalaguppe, Ramya and AP, Prathosh},
+  title     = {LoMOE: Localized Multi-Object Editing via Multi-Diffusion},
+  journal   = {ACMMM},
+  year      = {2024},
 }</code></pre>
   </div>
 </section>
