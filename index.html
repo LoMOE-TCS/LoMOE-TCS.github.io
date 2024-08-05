@@ -138,7 +138,7 @@
       </video> -->
       <img src="./static/images/Teaser.png"
                  class="interpolation-image"
-                 alt="Extracted Curve Skeleton"/>
+                 alt="Representative Examples of Editing"/>
       <h2 class="subtitle has-text-centered">
       </h2>
     </div>
@@ -254,7 +254,7 @@
           <h2 class="title is-3">Schematic Diagram</h2>
            <img src="./static/images/LoMOE_v5-1.png"
                  class="interpolation-image"
-                 alt="Extracted Curve Skeleton"/>
+                 alt="Schematic Diagram"/>
           <p>
             LoMOE comprises of 3 main steps: <b>Inversion</b> produces \(x_{inv}\) and \(c_0\) corresponding to input \(\mathbf{x}_0\). <b>MultiDiffusion process</b> helps restrict the edits to regions \(M_1, M_2\) guided by \(c_1, c_2\). <b>Preservation of Attributes</b> is achieved via \(\mathcal{L}_{xa}\) and \(\mathcal{L}_b\), using reference cross-attention maps and background latents obtained through a reconstruction process.
           </p>
@@ -274,11 +274,11 @@
         <h2 class="title is-3 has-text-centered">Comparisions</h2>
 
         <!-- Static. -->
-        <h3 class="title is-4 has-text-centered">Multi-Object Editing Comparision</h3>
+        <h3 class="title is-4 has-text-centered">Single-Object Editing Comparision</h3>
         <div class="content has-text-justified">
           <img src="./static/images/Single.png"
                  class="interpolation-image"
-                 alt="Interpolation end reference image."/>
+                 alt="Single-Object Editing Comparision"/>
 
           <p>
             <b>Comparison among contemporary methods for Single Object Edits: </b> We observe that <a href="https://sde-image-editing.github.io/">SDEdit</a> and <a href="https://www.timothybrooks.com/instruct-pix2pix">InstructP2P</a> tend to modify the whole image. <a href="https://github.com/openai/glide-text2im">GLIDE</a> often inpaints and removes the subject of the edit in cases where it fails to generate the edit. <a href="https://arxiv.org/abs/2210.11427">DiffEdit</a> produces the same output as SDEdit while preserving the unmasked regions of the input image. <a href="https://omriavrahami.com/blended-latent-diffusion-page/">BLD</a> doesn't preserve the structure of the input and makes unintented attribute edits to the masked subject. Finally, we observe that our proposed <b>LoMOE</b> makes the intented edit, preserves the unmasked region and avoids unintended attribute edits.
@@ -292,7 +292,7 @@
         <div class="content has-text-justified">
           <img src="./static/images/Multi.png"
                  class="interpolation-image"
-                 alt="Interpolation end reference image."/>
+                 alt="Multi-Object Editing Comparision"/>
           <p>
             <b>Comparison with contemporary methods for Multi-Object Edits:</b> While the baselines are either unable to make the edit, accumulate artifacts, edit the unmasked region, or make unintended attribute edits,  LoMOE is able to faithfully edit in accordance with the target prompts.
           </p>
