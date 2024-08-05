@@ -36,6 +36,9 @@
         href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
   <link rel="stylesheet" href="./static/css/index.css">
   <link rel="icon" href="./static/images/favicon.ico">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.css" integrity="sha384-zB1R0rpPzHqg7Kpt0Aljp8JPLqbXI3bhnPWROx27a9N0Ll6ZP/+DiW/UqRcLbRjq" crossorigin="anonymous">
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.js" integrity="sha384-y23I5Q6l+B6vatafAwxRu/0oK/79VlbSz7Q9aiSZUvyWYIYsd+qj+o24G5ZU2zJz" crossorigin="anonymous"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/contrib/auto-render.min.js" integrity="sha384-kWPLUVMOks5AQFrykwIup5lo0m3iMkkHrD0uJ4H5cjeGihAutqP0yW0J6dpFiVkI" crossorigin="anonymous" onload="renderMathInElement(document.body);"></script>
 
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <script defer src="./static/js/fontawesome.all.min.js"></script>
@@ -183,7 +186,7 @@
     <!-- Paper video. -->
     <div class="columns is-centered has-text-centered">
       <div class="column is-four-fifths">
-        <h2 class="title is-3">Summary</h2>
+        <h2 class="title is-3">Abstract</h2>
 <!--         <div class="publication-video">
           <iframe src="https://www.youtube.com/embed/MrKrnHhk8IA?rel=0&amp;showinfo=0"
                   frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
@@ -198,29 +201,20 @@
       <div class="column is-four-fifths">
         <div class="content has-text-justified">
           <p>
-            Animating a virtual character based on a real performance of an actor is a challenging task that currently requires expensive motion capture setups and additional effort by expert animators, rendering it accessible only to large production houses. The goal of our work is to democratize this task by developing a frugal alternative termed <b>Transfer4D</b> that uses only commodity depth sensors and further reduces animators' effort by automating the rigging and animation transfer process. 
+            Recent developments in diffusion models have demonstrated an exceptional capacity to generate high-quality prompt-conditioned image edits. Nevertheless, previous approaches have primarily relied on textual prompts for image editing, which tend to be less effective when making precise edits to specific objects or fine-grained regions within a scene containing single/multiple objects. 
           </p>
           <p>
-            Our approach can transfer motion from an incomplete, single-view depth video to a semantically similar target mesh, unlike prior works that make a stricter assumption on the source to be noise-free and watertight. 
+            We introduce a novel framework for zero-shot localized multi-object editing through a multi-diffusion process to overcome this challenge. This framework empowers users to perform various operations on objects within an image, such as adding, replacing, or editing <b>many</b> objects in a complex scene <b>in one pass</b>. 
+            
+            Our approach leverages foreground masks and corresponding simple text prompts that exert localized influences on the target regions resulting in high-fidelity image editing. A combination of cross-attention and background preservation losses within the latent space ensures that the characteristics of the object being edited are preserved while simultaneously achieving a high-quality, seamless reconstruction of the background with fewer artifacts compared to the state-of-the-art (SOTA). We also curate and release a dataset dedicated to multi-object editing, named <b>LoMOE-Bench</b>. Our experiments against existing SOTA demonstrate the improved effectiveness of our approach in terms of both image editing quality, and inference speed. 
           </p>
-          <ul>
-            <li>
-              We use non-rigid reconstruction to track motion from the depth sequence, and then we rig the source object using skinning decomposition. Finally, the rig is embedded into the target object for motion retargeting.
-            </li>
-            <li>
-              To handle sparse, incomplete videos from depth video inputs and variations between source and target objects, we propose to use skeletons as an intermediary representation between motion capture and transfer. 
-            </li>
-            <li>
-              We propose a novel unsupervised skeleton extraction pipeline from single-view depth sequence that incorporates additional geometric information, resulting in superior performance in motion reconstruction and transfer in comparison to the contemporary methods and making our approach generic. 
-            </li>
-          </ul>
         </div>
       </div>
     </div>
     <!--/ Abstract. -->
 
     <!-- Paper video. -->
-    <div class="columns is-centered has-text-centered">
+    <!-- <div class="columns is-centered has-text-centered">
       <div class="column is-four-fifths">
         <h2 class="title is-3">Video</h2>
         <div class="publication-video">
@@ -228,7 +222,7 @@
                   frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
         </div>
       </div>
-    </div>
+    </div> -->
     <!--/ Paper video. -->
   </div>
 </section>
@@ -252,48 +246,21 @@
 
 <section class="section">
   <div class="container is-max-desktop has-text-centered">
-    <h2 class="title is-3"> Skeletonization </h2>
-
     <div class="columns is-centered has-text-centered">
       
       <!-- Curve Skeleton. -->
       <div class="column">
         <div class="content">
-          <h2 class="title is-3">Curve skeleton</h2>
-           <img src="./static/images/curve_skeleton.jpeg"
+          <h2 class="title is-3">Schematic Diagram</h2>
+           <img src="./static/images/LoMOE_v5-1.png"
                  class="interpolation-image"
                  alt="Extracted Curve Skeleton"/>
           <p>
-            (i) Notice that the extracted joint position from Local separators lies on the surface of the incomplete mesh. Our optimization aligns the joint position to the medial axis of the object.
+            LoMOE comprises of 3 main steps: <b>Inversion</b> produces \(x_{inv}\) and \(c_0\) corresponding to input \(\mathbf{x}_0\). <b>MultiDiffusion process</b> helps restrict the edits to regions \(M_1, M_2\) guided by \(c_1, c_2\). <b>Preservation of Attributes</b> is achieved via \(\mathcal{L}_{xa}\) and \(\mathcal{L}_b\), using reference cross-attention maps and background latents obtained through a reconstruction process.
           </p>
         </div>
       </div>
-      <!--/ Curve Skeleton. -->
-
-      <!-- Matting. -->
-      <div class="column">
-        <h2 class="title is-3">Motion Skeleton</h2>
-        <div class="columns is-centered">
-          <div class="column content">
-            <img src="./static/images/motion_skeleton.jpeg"
-                 class="interpolation-image"
-                 alt="Interpolation end reference image."/>
-            <p>
-              (ii) To incorporate the motion information, each curve of the extracted curve skeleton is split into multiple bones
-            </p>
-          </div>
-        </div>
-      </div>
-      <!-- Matting. -->
-
     </div>
-
-    <div class="is-full-width">
-          <p>
-            Our proposed skeletonization method, (a) does not require predifined template or markers, (b) works on single-view incomplete mesh sequence, and (c) uses the geometry and motion cues to estimate skeleton motion.
-          </p>
-    </div>
-
 </section>
 
 
@@ -330,10 +297,7 @@
             <b>Comparison with contemporary methods for Multi-Object Edits:</b> While the baselines are either unable to make the edit, accumulate artifacts, edit the unmasked region, or make unintended attribute edits,  LoMOE is able to faithfully edit in accordance with the target prompts.
           </p>
         </div>
-        <!--/ Motion Skeleton. -->
-      
     </div>
-    <!--/ Matting. -->
   </div>
 </section>
 
